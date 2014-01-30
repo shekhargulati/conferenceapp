@@ -17,13 +17,14 @@
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
+            <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <build>
+    <finalName>conferenceapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -43,6 +44,7 @@
                 <version>2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                   <outputDirectory>/Users/shekhargulati/tools/jboss/wildfly-8.0.0.CR1/standalone/deployments</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>
