@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 import javax.enterprise.concurrent.ManagedExecutorService;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.Response.Status;
 import com.shekhar.conferenceapp.domain.Conference;
 import com.shekhar.conferenceapp.services.ConferenceService;
 import com.shekhar.conferenceapp.services.GooseExtractorClient;
+import com.shekhar.conferenceapp.services.Job;
 
 @Path("/conferences")
 public class ConferenceResource {
@@ -35,6 +37,9 @@ public class ConferenceResource {
     
     @Inject
     private GooseExtractorClient gooseExtractorClient;
+    
+    @Inject
+    private Event<Job> event;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -51,6 +56,10 @@ public class ConferenceResource {
                 logger.info("Saving conference .. " + conference);
                 Conference persitedConference = conferenceService.save(conference);
                 logger.info("Saved conference ..");
+                if(conference.isTrack()){
+                    logger.info("firing off Job event...");
+                    event.fire(new Job(persitedConference.getId(), persitedConference.getName(), persitedConference.getHashtags()));
+                }
                 asyncResponse.resume(Response.status(Status.CREATED).entity(persitedConference).build());
             }
         });
