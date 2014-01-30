@@ -1,5 +1,6 @@
 package com.shekhar.conferenceapp.rest;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -18,6 +19,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.shekhar.conferenceapp.domain.Conference;
 import com.shekhar.conferenceapp.services.ConferenceService;
+import com.shekhar.conferenceapp.services.GooseExtractorClient;
 
 @Path("/conferences")
 public class ConferenceResource {
@@ -30,6 +32,9 @@ public class ConferenceResource {
     
     @Resource
     private ManagedExecutorService mes;
+    
+    @Inject
+    private GooseExtractorClient gooseExtractorClient;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -38,11 +43,11 @@ public class ConferenceResource {
         mes.submit(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    // ignoring it
+                Map<String, String> map = gooseExtractorClient.fetchImageAndDescription(conference.getConferenceUrl());
+                if (conference.getBannerImgUrl() == null) {
+                    conference.setBannerImgUrl(map.get("bannerImgUrl"));
                 }
+                conference.setDescription(map.get("description"));
                 logger.info("Saving conference .. " + conference);
                 Conference persitedConference = conferenceService.save(conference);
                 logger.info("Saved conference ..");
