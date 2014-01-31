@@ -1,0 +1,83 @@
+<form class="form-horizontal" role="form" id="conferenceForm" ng-submit="save()">
+	<div class="form-group">
+		<label for="title" class="col-sm-2 control-label">Name</label>
+
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="name" name="name"
+				placeholder="Conference Name(eg. JUDCon India)" ng-model="conference.name" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="conferenceUrl" class="col-sm-2 control-label">Conference Homepage Url</label>
+
+		<div class="col-sm-10">
+			<input type="url" class="form-control" id="conferenceUrl" ng-model="conference.conferenceUrl" name="conferenceUrl"
+				placeholder="Conference Url(eg. http://www.jboss.org/events/JUDCon/2014/india)">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="hashtags" class="col-sm-2 control-label">HashTags</label>
+
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="hashtags" name="hashtags" ng-model="conference.hashtags"
+				placeholder="Comma separated list of Twitter hashtags to track(eg. judcon,judconin)"
+				required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="speakers" class="col-sm-2 control-label">Speakers Twitter Handles</label>
+
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="speakers" name="speakers" ng-model="conference.speakers" placeholder="Comma separated list of Speaker Twitter handles to track(eg. shekhargulati)" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="startDate" class="col-sm-2 control-label">Conference
+			Start Date</label>
+
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="startDate" ng-model="conference.startDate"
+				name="startDate" placeholder="Conference Start Date">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="endDate" class="col-sm-2 control-label">Conference
+			End Date</label>
+
+		<div class="col-sm-10">
+			<input type="date" class="form-control" id="endDate" name="endDate" ng-model="conference.endDate"
+				placeholder="Conference End Date">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="bannerImgUrl" class="col-sm-2 control-label">Conference Banner Image Url</label>
+
+		<div class="col-sm-10">
+			<input type="url" class="form-control" id="bannerImgUrl"
+				name="bannerImgUrl" ng-model="conference.bannerImgUrl"
+				placeholder="Image url(eg. http://www.jboss.org/dms/judcon/2014india/judcon2014india_banner_1180px_speakersannounced.png)">
+		</div>
+	</div>
+	
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<div class="checkbox">
+				<label> <input type="checkbox" id="track" name="track" ng-model="conference.track">
+					Track Conference
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-success">Save Conference</button>
+		</div>
+	</div>
+</form>

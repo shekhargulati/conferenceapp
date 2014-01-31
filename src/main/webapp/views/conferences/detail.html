@@ -1,0 +1,8 @@
+<h1>{{conference.name}}</h1>
+<img src="{{conference.bannerImgUrl}}">
+<hr>
+<div>
+	<p class="lead">{{conference.description}}</p>
+</div>
+<small class="muted">Starts On: {{conference.startDate | date:'medium'}}</small>
+<small class="muted">Ends On: {{conference.endDate | date:'medium'}}</small>

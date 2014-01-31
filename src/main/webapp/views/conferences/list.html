@@ -1,0 +1,12 @@
+<h2>
+	Conferences <a class="btn btn-primary pull-right"
+		href="#/conferences/new"><i class="icon-plus-sign icon-white"></i>
+		Submit New conference</a>
+</h2>
+
+<table class="table table-striped">
+	<tr ng-repeat="conference in conferences">
+		<td><a href="#/conferences/{{conference.id}}">{{conference.name}}</a></td>
+		<td>{{conference.description}}</td>
+	</tr>
+</table>
