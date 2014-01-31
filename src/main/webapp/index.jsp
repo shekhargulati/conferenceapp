@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>ConfSays: Learn about conferences better</title>
+<title>ConferenceApp: Learn about conferences better</title>
 
 <!-- Bootstrap core CSS -->
 <!-- Bootstrap core CSS -->
@@ -41,7 +41,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value="/"/>">ConfSays</a>
+				<a class="navbar-brand" href="<c:url value="/"/>">ConferenceApp</a>
 			</div>
 
 			<div class="navbar-collapse collapse">
@@ -65,7 +65,7 @@
 			<!-- Example row of columns -->
 			<div class="row">
 				<div class="col-md-6">
-					<h2>ConfSays</h2>
+					<h2>ConferenceApp</h2>
 					<small>Helps you learn what attendees were saying about the
 						conference</small>
 
