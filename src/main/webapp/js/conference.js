@@ -1,6 +1,6 @@
 angular.module("confsays.services", ["ngResource"]).
     factory('Conference', function ($resource) {
-        var Conference = $resource('/conferenceapp/resources/conferences/:conferenceId', {conferenceId: '@id'});
+        var Conference = $resource('/resources/conferences/:conferenceId', {conferenceId: '@id'});
         console.log("Confernce: "+Conference);
         Conference.prototype.isNew = function(){
             return (typeof(this.id) === 'undefined');

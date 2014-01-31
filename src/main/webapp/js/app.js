@@ -1,8 +1,8 @@
 var wsUrl;
 if (window.location.protocol == 'http:') {
-          wsUrl = 'ws://' + window.location.host + '/conferenceapp/quiz';
+          wsUrl = 'ws://' + window.location.host + ':8000/quiz';
 } else {
-          wsUrl = 'wss://' + window.location.host + '/conferenceapp/quiz';
+          wsUrl = 'wss://' + window.location.host + ':8443/quiz';
 }
 console.log('WebSockets Url : ' + wsUrl);
 var ws = new WebSocket(wsUrl);
